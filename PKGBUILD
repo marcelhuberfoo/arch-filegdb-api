@@ -28,6 +28,7 @@ build() {
 	#Setup LD_LIBRARY_PATH
 	LD_LIBRARY_PATH=$srcdir/${_pkgname}/lib:$LD_LIBRARY_PATH
         export LD_LIBRARY_PATH
+	export CPPFLAGS=-Dlinux
         #Building all samples
 	cd "$srcdir/${_pkgname}/samples"
 	make -j9
