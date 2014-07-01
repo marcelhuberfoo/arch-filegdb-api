@@ -27,10 +27,10 @@ build() {
   export LD_LIBRARY_PATH
   export CPPFLAGS=-Dlinux
   #Building all samples
-  cd "$srcdir/${_pkgname}/samples"
+  cd "$srcdir/$_pkgname/samples"
   make -j9
   # Building ProcessTopology
-  cd "$srcdir/${_pkgname}/samples/ProcessTopologies"
+  cd "$srcdir/$_pkgname/samples/ProcessTopologies"
   # Insert libxml2 library path to Makefile
   sed -i '/^CXXFLAGS=/ s/$/ -I\/usr\/include\/libxml2\//' Makefile
   make
@@ -40,7 +40,7 @@ build() {
 # Warning: Lots of verbose output for tests!
 #
 check() {
-  cd "$srcdir/${_pkgname}/samples/bin"
+  cd "$srcdir/$_pkgname/samples/bin"
   for i in *
   do
     ./${i}
@@ -48,7 +48,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   mkdir -p $pkgdir/usr/{lib,include,share/{doc,licenses}}/$pkgname
   mkdir -p $pkgdir/usr/lib/$pkgname/{lib,include}
   mkdir -p $pkgdir/etc/ld.so.conf.d
