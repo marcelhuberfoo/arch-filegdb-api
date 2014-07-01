@@ -36,9 +36,7 @@ build() {
   make
 }
 
-# Uncomment check() portion if you want to perform sample tests
 # Warning: Lots of verbose output for tests!
-#
 check() {
   cd "$srcdir/$_pkgname/samples/bin"
   for i in *
@@ -60,3 +58,5 @@ package() {
   echo "/usr/lib/$pkgname/lib" > $pkgdir/etc/ld.so.conf.d/$pkgname.conf
   chmod 644 $pkgdir/etc/ld.so.conf.d/$pkgname.conf
 }
+
+# vim:set ts=2 sw=2 et:
