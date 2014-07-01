@@ -49,18 +49,14 @@ check() {
 
 package() {
   cd "$srcdir/$_pkgname"
-#  mkdir -p $pkgdir/usr/{lib,share/{doc,licenses}}/$pkgname
-#  mkdir -p $pkgdir/usr/lib/$pkgname/{lib,include}
-  mkdir -p $pkgdir/etc/ld.so.conf.d
-  install -d -m644 "$pkgdir/usr/share/licenses/$pkgname/" "$pkgdir"/usr/lib/$pkgname/{lib,include}
+  install -d -m755 \
+    "$pkgdir"/usr/lib/$pkgname/{lib,include} \
+    "$pkgdir"/usr/share/{doc,licenses}/$pkgname \
+    "$pkgdir"/etc/ld.so.conf.d
   install -m444 $srcdir/$_pkgname/license/* "$pkgdir/usr/share/licenses/$pkgname/"
   install -m444 $srcdir/$_pkgname/lib/* "$pkgdir/usr/lib/$pkgname/lib/"
   install -m444 $srcdir/$_pkgname/include/* "$pkgdir/usr/lib/$pkgname/include/"
   cp -r $srcdir/$_pkgname/doc/html "$pkgdir/usr/share/doc/$pkgname/"
   echo "/usr/lib/$pkgname/lib" > $pkgdir/etc/ld.so.conf.d/$pkgname.conf
-  find $pkgdir/usr/share/doc/$pkgname/ -type d -exec chmod 755 '{}' \;
-  find $pkgdir/usr/share/doc/$pkgname/ -type f -exec chmod 644 '{}' \;
-  chown root: $pkgdir/usr/share/doc/$pkgname/*
   chmod 644 $pkgdir/etc/ld.so.conf.d/$pkgname.conf
-  chown root: $pkgdir/etc/ld.so.conf.d/$pkgname.conf
 }
