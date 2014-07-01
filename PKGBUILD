@@ -52,9 +52,9 @@ package() {
   mkdir -p $pkgdir/usr/{lib,include,share/{doc,licenses}}/$pkgname
   mkdir -p $pkgdir/usr/lib/$pkgname/{lib,include}
   mkdir -p $pkgdir/etc/ld.so.conf.d
-  install -Dm644 $srcdir/${_pkgname}/license/* "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 $srcdir/${_pkgname}/lib/* "$pkgdir/usr/lib/$pkgname/lib/"
-  install -Dm644 $srcdir/${_pkgname}/include/* "$pkgdir/usr/lib/$pkgname/include/"
+  install -Dm644 $srcdir/$_pkgname/license/* "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 $srcdir/$_pkgname/lib/* "$pkgdir/usr/lib/$pkgname/lib/"
+  install -Dm644 $srcdir/$_pkgname/include/* "$pkgdir/usr/lib/$pkgname/include/"
   cp -r $srcdir/${_pkgname}/doc/html "$pkgdir/usr/share/doc/$pkgname/"
   echo "/usr/lib/$pkgname/lib" > $pkgdir/etc/ld.so.conf.d/$pkgname.conf
   find $pkgdir/usr/share/doc/$pkgname/ -type d -exec chmod 755 '{}' \;
