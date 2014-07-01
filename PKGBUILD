@@ -54,7 +54,7 @@ package() {
     "$pkgdir"/usr/share/{doc,licenses}/$pkgname \
     "$pkgdir"/etc/ld.so.conf.d
   install -m444 $srcdir/$_pkgname/license/* "$pkgdir/usr/share/licenses/$pkgname/"
-  install -m666 $srcdir/$_pkgname/lib/* "$pkgdir/usr/lib/$pkgname/lib/"
+  install -m555 $srcdir/$_pkgname/lib/* "$pkgdir/usr/lib/$pkgname/lib/"
   install -m444 $srcdir/$_pkgname/include/* "$pkgdir/usr/lib/$pkgname/include/"
   cp -r $srcdir/$_pkgname/doc/html "$pkgdir/usr/share/doc/$pkgname/"
   echo "/usr/lib/$pkgname/lib" > $pkgdir/etc/ld.so.conf.d/$pkgname.conf
